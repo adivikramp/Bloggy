@@ -1,25 +1,33 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@layer base {
+  body {
+    @apply bg-[#080c14] text-slate-50 min-h-screen;
+  }
+}
 
 @layer components {
-    .nav-link {
-        @apply w-8 h-8 rounded-md hover:bg-indigo-600 grid place-items-center;
-    }
+  .card {
+    @apply bg-slate-900/80 backdrop-blur-sm rounded-2xl p-8 border border-slate-700/50 max-w-md mx-auto mt-16 shadow-2xl shadow-black/40;
+  }
 
-    .card {
-        @apply bg-white px-6 py-10 rounded-lg shadow-lg;
-    }
+  .title {
+    @apply text-2xl font-bold text-slate-50 mb-1;
+  }
 
-    .title {
-        @apply font-bold mb-8 text-2xl;
-    }
+  .input {
+    @apply w-full bg-slate-800/60 border border-slate-700 rounded-xl px-4 py-3 text-slate-50 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-400/60 focus:border-amber-400/40 mb-4 block transition-all;
+  }
 
-    .input {
-        @apply block w-full rounded-md p-2 placeholder:text-sm border-0 outline-0 ring-1 ring-indigo-500 focus:ring-2 mb-4;
-    }
+  .btn {
+    @apply w-full bg-gradient-to-r from-amber-400 to-orange-400 text-slate-900 font-bold py-3 rounded-xl hover:from-amber-300 hover:to-orange-300 transition-all cursor-pointer mt-2 shadow-lg shadow-amber-500/20 hover:shadow-amber-500/40 active:scale-[0.98];
+  }
 
-    .btn {
-        @apply block w-full bg-indigo-500 text-white rounded-md p-2 active:bg-indigo-600;
-    }
+  .nav-link {
+    @apply w-9 h-9 flex items-center justify-center rounded-xl hover:bg-slate-800 hover:text-amber-400 text-slate-400 transition-all text-base;
+  }
+
+  .label {
+    @apply block text-xs font-semibold text-slate-400 uppercase tracking-widest mb-1.5;
+  }
 }

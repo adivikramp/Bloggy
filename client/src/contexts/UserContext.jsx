@@ -1,20 +1,18 @@
-/* eslint-disable react/prop-types */
-import { useState } from "react";
-import { createContext } from "react";
+import { createContext, useState } from "react";
 
 export const UserContext = createContext();
 
 const UserProvider = ({ children }) => {
-  const [user, setUser] = useState({
-    email: localStorage.getItem("email"),
-    posts: [],
-  });
+	const [user, setUser] = useState({
+		email: localStorage.getItem("email"),
+		posts: [],
+	});
 
-  return (
-    <UserContext.Provider value={{ user, setUser }}>
-      {children}
-    </UserContext.Provider>
-  );
+	return (
+		<UserContext.Provider value={{ user, setUser }}>
+			{children}
+		</UserContext.Provider>
+	);
 };
 
-export default UserProvider;
+export { UserProvider };

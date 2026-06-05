@@ -1,10 +1,10 @@
-/* eslint-disable react/prop-types */
 const Alert = ({ msg }) => {
-  return (
-    <div className="bg-red-500 text-white p-2 rounded-md mt-6 text-sm mb-4">
-      <i className="fa-solid fa-triangle-exclamation"></i> {msg}
-    </div>
-  );
+	return (
+		<div className="flex items-center gap-3 bg-red-500/8 border border-red-500/30 text-red-400 px-4 py-3 rounded-xl mt-4 text-sm">
+			<i className="fa-solid fa-circle-exclamation shrink-0"></i>
+			<span>{msg}</span>
+		</div>
+	);
 };
 
-export default Alert;
+export { Alert };

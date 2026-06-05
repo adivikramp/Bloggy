@@ -1,96 +1,108 @@
 /* --------------------------------------------- Get existing posts --------------------------------------------- */
 const getPosts = async () => {
-  const response = await fetch("http://localhost:5000/api/posts");
-  const data = await response.json();
+	const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/posts`);
+	const data = await response.json();
 
-  if (!response.ok) {
-    throw Error(data.error);
-  }
+	if (!response.ok) {
+		throw Error(data.error);
+	}
 
-  return data;
+	return data;
 };
 
 /* --------------------------------------------- Get user's existing posts --------------------------------------------- */
 const getUserPosts = async () => {
-  const response = await fetch("http://localhost:5000/api/posts/user", {
-    headers: {
-      Authorization: `Bearer ${localStorage.getItem("token")}`,
-    },
-  });
+	const response = await fetch(
+		`${import.meta.env.VITE_BACKEND_URL}/api/posts/user`,
+		{
+			headers: {
+				Authorization: `Bearer ${localStorage.getItem("token")}`,
+			},
+		},
+	);
 
-  const data = await response.json();
+	const data = await response.json();
 
-  if (!response.ok) {
-    throw Error(data.error);
-  }
+	if (!response.ok) {
+		throw Error(data.error);
+	}
 
-  return data;
+	return data;
 };
 
 /* --------------------------------------------- Create new post --------------------------------------------- */
 const createPost = async (title, body) => {
-  if (!title || !body) {
-    throw Error("all fields are required");
-  }
+	if (!title || !body) {
+		throw Error("all fields are required");
+	}
 
-  const response = await fetch("http://localhost:5000/api/posts", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${localStorage.getItem("token")}`,
-    },
-    body: JSON.stringify({ title, body }),
-  });
+	const response = await fetch(
+		`${import.meta.env.VITE_BACKEND_URL}/api/posts`,
+		{
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+				Authorization: `Bearer ${localStorage.getItem("token")}`,
+			},
+			body: JSON.stringify({ title, body }),
+		},
+	);
 
-  const data = await response.json();
+	const data = await response.json();
 
-  if (!response.ok) {
-    throw Error(data.error);
-  }
+	if (!response.ok) {
+		throw Error(data.error);
+	}
 
-  return data;
+	return data;
 };
 
 /* --------------------------------------------- Delete a post --------------------------------------------- */
 const deletePost = async (_id) => {
-  const response = await fetch(`http://localhost:5000/api/posts/${_id}`, {
-    method: "DELETE",
-    headers: {
-      Authorization: `Bearer ${localStorage.getItem("token")}`,
-    },
-  });
+	const response = await fetch(
+		`${import.meta.env.VITE_BACKEND_URL}/api/posts/${_id}`,
+		{
+			method: "DELETE",
+			headers: {
+				Authorization: `Bearer ${localStorage.getItem("token")}`,
+			},
+		},
+	);
 
-  const data = await response.json();
+	const data = await response.json();
 
-  if (!response.ok) {
-    throw Error(data.error);
-  }
+	if (!response.ok) {
+		throw Error(data.error);
+	}
 
-  return data;
+	return data;
 };
 
 /* --------------------------------------------- Update a post --------------------------------------------- */
 const updatePost = async (_id, title, body) => {
-  if (!title || !body) {
-    throw Error("All fields are required");
-  }
+	if (!title || !body) {
+		throw Error("All fields are required");
+	}
 
-  const response = await fetch(`http://localhost:5000/api/posts/${_id}`, {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${localStorage.getItem("token")}`,
-    },
-    body: JSON.stringify({ title, body }),
-  });
+	const response = await fetch(
+		`${import.meta.env.VITE_BACKEND_URL}/api/posts/${_id}`,
+		{
+			method: "PUT",
+			headers: {
+				"Content-Type": "application/json",
+				Authorization: `Bearer ${localStorage.getItem("token")}`,
+			},
+			body: JSON.stringify({ title, body }),
+		},
+	);
 
-  const data = await response.json();
+	const data = await response.json();
 
-  if (!response.ok) {
-    throw Error(data.error);
-  }
+	if (!response.ok) {
+		throw Error(data.error);
+	}
 
-  return data;
+	return data;
 };
 
-export { getPosts, getUserPosts, createPost, deletePost, updatePost };
+export { createPost, deletePost, getPosts, getUserPosts, updatePost };
